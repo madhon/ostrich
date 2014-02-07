@@ -159,7 +159,7 @@ namespace Ostrich.Service
             binary = null;
             try
             {
-                binary = Assembly.GetExecutingAssembly().GetManifestResourceStream("OstrichNet.Service.Static." + resource);
+                binary = Assembly.GetExecutingAssembly().GetManifestResourceStream("Ostrich.Service.Static." + resource);
             }
             catch (Exception)
             {
