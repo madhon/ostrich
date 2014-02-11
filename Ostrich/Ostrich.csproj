@@ -101,6 +101,9 @@
     <EmbeddedResource Include="Service\Static\jquery.js" />
     <EmbeddedResource Include="Service\Static\report.html" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Service\Static\jquery-migrate.js" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
