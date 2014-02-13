@@ -163,11 +163,11 @@ namespace Ostrich.Service
             IServiceConfiguration configuration = null;
             try
             {
-                configuration = (ServiceConfiguration) ConfigurationManager.GetSection("etservice/diagnostics");
+                configuration = (ServiceConfiguration)ConfigurationManager.GetSection("ostrich/diagnostics");
             }
             catch (Exception e)
             {
-                logger.Warn("Could not load configuration section etservice/diagnostics. Using defaults", e);
+                logger.Warn("Could not load configuration section ostrich/diagnostics. Using defaults", e);
             }
             return configuration ?? new StaticServiceConfiguration();
         }

@@ -27,7 +27,7 @@ namespace Ostrich.Service
 
     public class ServiceConfiguration : ConfigurationSection, IServiceConfiguration
     {
-        [ConfigurationProperty("myAttrib1", DefaultValue = "7400", IsRequired = true)]
+        [ConfigurationProperty("ListenPort", DefaultValue = "7000", IsRequired = true)]
         [IntegerValidator(MinValue = 1024, MaxValue = 65535)]
         public int Port
         {
