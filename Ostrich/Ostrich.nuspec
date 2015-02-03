@@ -11,8 +11,8 @@
     <tags>performance metrics counters</tags>
     <iconUrl>http://apitize.com.s3.amazonaws.com/logo_metrics.png</iconUrl>    
     <dependencies>
-  	  <dependency id="Common.Logging" version="2.2.0" />
-      <dependency id="Newtonsoft.Json" version="6.0.5" />
+  	  <dependency id="Common.Logging" version="3.0.0" />
+      <dependency id="Newtonsoft.Json" version="6.0.8" />
     </dependencies>
   </metadata>
     <files>
