@@ -19,7 +19,7 @@ using System;
 using System.Net;
 using System.Net.Sockets;
 using System.Reflection;
-using Common.Logging;
+using Ostrich.Logging;
 
 namespace Ostrich.Http
 {
@@ -32,7 +32,7 @@ namespace Ostrich.Http
     /// </summary>
     public class HttpServer : IKayakServer
     {
-        private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog logger = LogProvider.GetCurrentClassLogger();
 
         public IPEndPoint ListenEndPoint { get; private set; }
         int backlog;
@@ -98,7 +98,7 @@ namespace Ostrich.Http
                 }
                 catch (Exception e)
                 {
-                    logger.Error(e);
+                    logger.ErrorException("GetConnection", e);
                 }
                     
             }, null);

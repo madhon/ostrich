@@ -20,15 +20,15 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
-using Common.Logging;
 using Newtonsoft.Json;
 using Ostrich.Util;
+using Ostrich.Logging;
 
 namespace Ostrich
 {
     public class Stats : StatsCollection
     {
-        private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog logger = LogProvider.GetCurrentClassLogger();
 
         private static readonly ConcurrentDictionary<string, StatsCollection> namedCollections = new ConcurrentDictionary<string, StatsCollection>();
 
@@ -65,7 +65,7 @@ namespace Ostrich
             } 
             catch (Exception e)
             {
-                logger.Warn("Could not read performance counters so the performance counter gauges will not be available. " + 
+                logger.WarnException("Could not read performance counters so the performance counter gauges will not be available. " + 
                             " The current process probably does not have the right permissions.", e);
             }
         }

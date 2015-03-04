@@ -19,7 +19,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
-using Common.Logging;
+using Ostrich.Logging;
 
 namespace Ostrich.Http
 {
@@ -30,7 +30,7 @@ namespace Ostrich.Http
 
     public static partial class Extensions
     {
-        private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog logger = LogProvider.GetCurrentClassLogger();
 
         public static void Host(this IKayakServer server, OwinApplication application)
         {
@@ -40,7 +40,7 @@ namespace Ostrich.Http
         public static void Host(this IKayakServer server, OwinApplication application, Action<Action> trampoline)
         {
             server.HostInternal(application, trampoline).AsContinuation<object>(trampoline)
-                (_ => { }, e => logger.Error(e));
+                (_ => { }, e => logger.ErrorException("KayakHost", e));
         }
 
         static IEnumerable<object> HostInternal(this IKayakServer server, OwinApplication application, Action<Action> trampoline)
@@ -60,7 +60,7 @@ namespace Ostrich.Http
         public static void ProcessSocket(this ISocket socket, IHttpSupport http, OwinApplication application, Action<Action> trampoline)
         {
             socket.ProcessSocketInternal(http, application).AsContinuation<object>(trampoline)
-                (_ => { }, e => logger.Error(e));
+                (_ => { }, e => logger.ErrorException("ProcessSocket", e));
         }
 
         static IEnumerable<object> ProcessSocketInternal(this ISocket socket, IHttpSupport http, OwinApplication application)

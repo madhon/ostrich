@@ -17,14 +17,14 @@
  */
 using System;
 using System.Reflection;
-using Common.Logging;
 using Ostrich.Util;
+using Ostrich.Logging;
 
 namespace Ostrich
 {
     public class Gauge
     {
-        private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog logger = LogProvider.GetCurrentClassLogger();
 
         private readonly Func<double> func;
 
@@ -44,7 +44,7 @@ namespace Ostrich
                 }
                 catch (Exception e)
                 {
-                    logger.Warn(e);
+                    logger.Warn(e.Message);
                 }
                 return 0;
             }

@@ -22,14 +22,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Threading;
-using Common.Logging;
- using Ostrich.Util;
+using Ostrich.Util;
+using Ostrich.Logging;
 
 namespace Ostrich.Service
 {
     public class TimeSeriesCollector : IDisposable
     {
-        private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog logger = LogProvider.GetCurrentClassLogger();
 
         private static readonly List<double> percentiles = new List<double>(new[] { 0.25d, 0.5d, 0.75d, 0.9d, 0.95d, .99d, 0.999d, 0.9999d });
         private static readonly List<long> emptyTimings = new List<long>(new[] { 0L, 0L, 0L, 0L, 0L, 0L, 0L });
@@ -94,7 +94,7 @@ namespace Ostrich.Service
             } 
             catch (Exception e)
             {
-                logger.Error("This is just a warning - Exception occured while rolling stats", e);
+                logger.ErrorException("This is just a warning - Exception occured while rolling stats", e);
             }
         }
 

@@ -22,9 +22,9 @@ using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
-using Common.Logging;
- using Ostrich.IO;
- using Ostrich.Util;
+using Ostrich.IO;
+using Ostrich.Util;
+using Ostrich.Logging;
 
 namespace Ostrich.Service
 {
@@ -41,7 +41,7 @@ namespace Ostrich.Service
 
     public class CarbonWriter : IDisposable
     {
-        private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog logger = LogProvider.GetCurrentClassLogger();
 
         private readonly BlockingCollection<string> sendQueue = new BlockingCollection<string>(1000);
         private readonly Thread senderThread;
@@ -94,7 +94,7 @@ namespace Ostrich.Service
             }
             catch (Exception e)
             {
-                logger.Error("Error processing stats", e);
+                logger.ErrorException("Error processing stats", e);
             }
             finally
             {
@@ -148,7 +148,7 @@ namespace Ostrich.Service
             } 
             catch (Exception e)
             {
-                logger.Error("Unable to flush buffer - this is not a fatal error", e);
+                logger.ErrorException("Unable to flush buffer - this is not a fatal error", e);
             }
             finally
             {
@@ -174,7 +174,7 @@ namespace Ostrich.Service
             }
             catch (Exception e)
             {
-                logger.Error("Unable to connect to " + config.ReceiverHost + ":" + config.ReceiverPort, e);
+                logger.ErrorException("Unable to connect to " + config.ReceiverHost + ":" + config.ReceiverPort, e);
             }
             return client;
         }

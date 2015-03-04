@@ -22,15 +22,15 @@ using System.Configuration;
 using System.Net;
 using System.Reflection;
 using System.Web;
-using Common.Logging;
- using Ostrich.Http;
- using Ostrich.Util;
+using Ostrich.Http;
+using Ostrich.Util;
+using Ostrich.Logging;
 
 namespace Ostrich.Service
 {
     public class HttpDiagnosticsService : IDisposable
     {
-        private static readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog logger = LogProvider.GetCurrentClassLogger();
 
         private static readonly IResourceHandler serviceInfoHandler = new ServerInfoHandler();
         private static readonly IResourceHandler statsHandler = new StatsResourceHandler();
@@ -167,7 +167,7 @@ namespace Ostrich.Service
             }
             catch (Exception e)
             {
-                logger.Warn("Could not load configuration section ostrich/diagnostics. Using defaults", e);
+                logger.WarnException("Could not load configuration section ostrich/diagnostics. Using defaults", e);
             }
             return configuration ?? new StaticServiceConfiguration();
         }
