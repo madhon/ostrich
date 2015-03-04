@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Text;
-using FluentAssertions;
+using Shouldly;
 using Ostrich.Service;
 using Xunit;
 using Xunit.Extensions;
@@ -33,7 +33,7 @@ namespace Ostrich.Tests
             using (var service = new HttpDiagnosticsService())
             {
                 service.Start();
-                StatusOfPage(page, service.Port).Should().Be(WebExceptionStatus.Success);
+                StatusOfPage(page, service.Port).ShouldBe(WebExceptionStatus.Success);
             }
         }
 

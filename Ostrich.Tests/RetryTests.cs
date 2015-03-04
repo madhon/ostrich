@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using FluentAssertions;
+using Shouldly;
 using Ostrich.Util;
 using Xunit;
 
@@ -23,9 +23,9 @@ namespace Ostrich.Tests
             }
             catch (AggregateException e)
             {
-                e.InnerExceptions.Cast<InvalidOperationException>().Count().Should().Be(3);
+                e.InnerExceptions.Cast<InvalidOperationException>().Count().ShouldBe(3);
             }
-            retries.Should().Be(3);
+            retries.ShouldBe(3);
         }
     }
 }
