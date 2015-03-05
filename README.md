@@ -1,6 +1,6 @@
 # Overview
 
-Port Twitter's Ostrich library from Scala to .NET
+Port of Twitter's Ostrich library from Scala to .NET
 
 # License
 
@@ -21,9 +21,7 @@ Apache 2.0
 
 # Dependencies
 
-- log4net
 - JSON.NET
-- nunit
 
 For ease of deployment, two Apache 2.0 licensed libraries have files embedded in the assembly under a different namespace - MiscUtil and Kayak HTTP Server.
 
