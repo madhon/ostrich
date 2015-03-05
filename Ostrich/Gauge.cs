@@ -15,16 +15,16 @@
  *  limitations under the License.
  *
  */
-using System;
-using System.Reflection;
-using Ostrich.Util;
-using Ostrich.Logging;
-
 namespace Ostrich
 {
+    using System;
+    using System.Reflection;
+    using Ostrich.Logging;
+    using Ostrich.Util;
+
     public class Gauge
     {
-        private static readonly ILog logger = LogProvider.GetCurrentClassLogger();
+        private static readonly ILog Logger = LogProvider.GetCurrentClassLogger();
 
         private readonly Func<double> func;
 
@@ -44,8 +44,9 @@ namespace Ostrich
                 }
                 catch (Exception e)
                 {
-                    logger.Warn(e.Message);
+                    Logger.Warn(e.Message);
                 }
+
                 return 0;
             }
         }

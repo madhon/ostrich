@@ -15,12 +15,12 @@
  *  limitations under the License.
  *
  */
- using System;
-using System.Collections;
-using System.Collections.Generic;
-
 namespace Ostrich
 {
+    using System;
+    using System.Collections;
+    using System.Collections.Generic;
+
     public class Histogram : IEnumerable<int>
     {
         private static readonly int[] bucketOffsets = new[]
@@ -30,6 +30,7 @@ namespace Ostrich
                                         9728, 12647, 16441, 21373, 27784, 36119, 46955, 61041, 79354, 103160, 134107,
                                         174339, 226641, 294633, 383023, 497930, 647308, 841501, 1093951
                                     };
+
         private static readonly int bucketOffsetSize = bucketOffsets.Length;
         
         private readonly int[] buckets = new int[bucketOffsetSize + 1];
@@ -70,7 +71,11 @@ namespace Ostrich
             var bucketLength = buckets.Length;
             var response = new int[bucketLength];
             Array.Copy(buckets, response, bucketLength);
-            if (reset) Clear();
+            if (reset)
+            {
+                Clear();
+            }
+
             return response;
         }
 
@@ -91,7 +96,7 @@ namespace Ostrich
             
             if (index - 1 >= bucketOffsetSize)
             {
-                return Int32.MaxValue;
+                return int.MaxValue;
             }
             
             return bucketOffsets[index - 1] - 1;
@@ -103,6 +108,7 @@ namespace Ostrich
             {
                 buckets[i] += other.buckets[i];
             }
+
             Total += other.Total;
         }
        
@@ -114,7 +120,9 @@ namespace Ostrich
         private static int BinarySearch(int[] array, int key, int low, int high)
         {
             if (low > high)
+            {
                 return low;
+            }
 
             var mid = (low + high + 1) >> 1;
             var midValue = array[mid];
@@ -122,10 +130,12 @@ namespace Ostrich
             {
                 return BinarySearch(array, key, mid + 1, high);
             }
+
             if (midValue > key)
             {
                 return BinarySearch(array, key, low, mid - 1);
             }
+
             return mid + 1;
         }
 

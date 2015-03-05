@@ -15,10 +15,10 @@
  *  limitations under the License.
  *
  */
- using System.Threading;
-
 namespace Ostrich
 {
+    using System.Threading;
+
     public class AtomicLong
     {
         public static readonly AtomicLong MinValue = new AtomicLong(long.MinValue);
@@ -60,17 +60,37 @@ namespace Ostrich
 
         public bool Equals(AtomicLong other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
+            if (ReferenceEquals(null, other))
+            { 
+                return false; 
+            }
+
+            if (ReferenceEquals(this, other)) 
+            { 
+                return true; 
+            }
+
             return other.value == value;
         }
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (AtomicLong)) return false;
-            return Equals((AtomicLong) obj);
+            if (ReferenceEquals(null, obj)) 
+            { 
+                return false; 
+            }
+
+            if (ReferenceEquals(this, obj)) 
+            { 
+                return true; 
+            }
+
+            if (obj.GetType() != typeof(AtomicLong)) 
+            { 
+                return false; 
+            }
+
+            return Equals((AtomicLong)obj);
         }
 
         public override int GetHashCode()

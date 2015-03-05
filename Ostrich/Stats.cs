@@ -15,27 +15,27 @@
  *  limitations under the License.
  *
  */
- using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Reflection;
-using Newtonsoft.Json;
-using Ostrich.Util;
-using Ostrich.Logging;
-
 namespace Ostrich
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Diagnostics;
+    using System.Reflection;
+    using Newtonsoft.Json;
+    using Ostrich.Logging;
+    using Ostrich.Util;
+
     public class Stats : StatsCollection
     {
-        private static readonly ILog logger = LogProvider.GetCurrentClassLogger();
+        private static readonly ILog Logger = LogProvider.GetCurrentClassLogger();
 
-        private static readonly ConcurrentDictionary<string, StatsCollection> namedCollections = new ConcurrentDictionary<string, StatsCollection>();
+        private static readonly ConcurrentDictionary<string, StatsCollection> NamedCollections = new ConcurrentDictionary<string, StatsCollection>();
 
         static Stats()
         {
             var stats = new Stats();
-            namedCollections[string.Empty] = stats;
+            NamedCollections[string.Empty] = stats;
 
             try
             {
@@ -65,7 +65,7 @@ namespace Ostrich
             } 
             catch (Exception e)
             {
-                logger.WarnException("Could not read performance counters so the performance counter gauges will not be available. " + 
+                Logger.WarnException("Could not read performance counters so the performance counter gauges will not be available. " + 
                             " The current process probably does not have the right permissions.", e);
             }
         }
@@ -132,13 +132,15 @@ namespace Ostrich
 
         public static StatsCollection GetDefault()
         {
-            return namedCollections[string.Empty];
+            return NamedCollections[string.Empty];
         }
 
         public static AtomicLong Delta(AtomicLong oldValue, AtomicLong newValue)
         {
             if (oldValue.Value <= newValue.Value)
+            {
                 return new AtomicLong(newValue.Value - oldValue.Value);
+            }
 
             var count = (AtomicLong.MaxValue.Value - oldValue.Value) + (newValue.Value - AtomicLong.MinValue.Value);
             return new AtomicLong(count + 1);
@@ -156,6 +158,7 @@ namespace Ostrich
                 jsonWriter.WritePropertyName(metric.Key.ToLower());
                 metric.Value.WriteJson(jsonWriter);
             }
+
             jsonWriter.WriteEndObject();
             jsonWriter.WritePropertyName("counters");
             jsonWriter.WriteStartObject();
@@ -164,6 +167,7 @@ namespace Ostrich
                 jsonWriter.WritePropertyName(counter.Key.ToLower());
                 jsonWriter.WriteValue(counter.Value.Value);
             }
+
             jsonWriter.WriteEndObject();
             jsonWriter.WritePropertyName("gauges");
             jsonWriter.WriteStartObject();
@@ -172,6 +176,7 @@ namespace Ostrich
                 jsonWriter.WritePropertyName(gauge.Key.ToLower());
                 jsonWriter.WriteValue(gauge.Value.Value);
             }
+
             jsonWriter.WriteEndObject();
         }
 
@@ -192,6 +197,5 @@ namespace Ostrich
             origin.Each(kv => destination[kv.Key] = display(kv.Value));
             return destination;
         }
-
     }
 }

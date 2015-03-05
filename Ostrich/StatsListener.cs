@@ -15,34 +15,34 @@
  *  limitations under the License.
  *
  */
- using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Runtime.CompilerServices;
-using System.Threading;
- using Ostrich.Util;
-
 namespace Ostrich
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Collections.Generic;
+    using System.Runtime.CompilerServices;
+    using System.Threading;
+    using Ostrich.Util;
+
     public class StatsListener
     {
-        private static readonly Lazy<StatsListener> defaultListener = new Lazy<StatsListener>(() => new StatsListener(Stats.GetDefault()), LazyThreadSafetyMode.ExecutionAndPublication);
+        private static readonly Lazy<StatsListener> DefaultListener = new Lazy<StatsListener>(() => new StatsListener(Stats.GetDefault()), LazyThreadSafetyMode.ExecutionAndPublication);
 
         private readonly StatsCollection collection;
         private readonly ConcurrentDictionary<string, Metric> metrics = new ConcurrentDictionary<string, Metric>();
         private readonly ConcurrentDictionary<string, AtomicLong> lastCounters = new ConcurrentDictionary<string, AtomicLong>();
-
-        public static StatsListener Default
-        {
-            get { return defaultListener.Value; }
-        }
-
+        
         public StatsListener(StatsCollection collection)
         {
             Guard.NotNull(collection);
             this.collection = collection;
             collection.AddListener(this);
             collection.Counters.Each(kv => lastCounters[kv.Key] = kv.Value);
+        }
+
+        public static StatsListener Default
+        {
+            get { return DefaultListener.Value; }
         }
 
         public Metric GetMetric(string tag)
@@ -59,6 +59,7 @@ namespace Ostrich
                 deltas[kv.Key] = Stats.Delta(lastCounters.GetOrAdd(kv.Key, new AtomicLong(0)), kv.Value);
                 lastCounters[kv.Key] = kv.Value;
             }
+
             return deltas;
         }
 

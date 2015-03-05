@@ -15,10 +15,10 @@
  *  limitations under the License.
  *
  */
- using System;
-
-namespace Ostrich.Util
+ namespace Ostrich.Util
 {
+    using System;
+
     public static class SystemClock
     {
         public static Func<DateTime> Now = () => DateTime.Now;
@@ -55,7 +55,7 @@ namespace Ostrich.Util
             var until = UtcNow() + TimeSpan.FromMilliseconds(millis);
             while (until < UtcNow())
             {
-                //spin
+                // spin
             }
         }
 

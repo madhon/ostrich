@@ -15,20 +15,40 @@
  *  limitations under the License.
  *
  */
- using System;
-
 namespace Ostrich
 {
+    using System;
+    
+    public enum DateTimePrecision
+    {
+        Seconds
+    }
+
     public static class DateTimeUtils
     {
         private const int NANOS_IN_A_MILLISECOND = 1000000;
 
         private static readonly DateTime epoch = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc);
-        private static readonly long epochTicks = epoch.Ticks;
+        private static readonly long EpochTicks = epoch.Ticks;
+
+        public static long CurrentTimeMillis
+        {
+            get { return DateTime.UtcNow.MillisFromEpoch(); }
+        }
+
+        public static long CurrentTimeNanos
+        {
+            get { return DateTime.UtcNow.NanosFromEpoch() / NANOS_IN_A_MILLISECOND; }
+        }
+
+        public static DateTime Epoch
+        {
+            get { return epoch; }
+        }
 
         public static string ToIso8601(this long millisFromEpoch, DateTimePrecision precision)
         {
-            var date = new DateTime(epochTicks + millisFromEpoch*TimeSpan.TicksPerMillisecond);
+            var date = new DateTime(EpochTicks + millisFromEpoch * TimeSpan.TicksPerMillisecond);
             return ToIso8601(date, precision);
         }
 
@@ -53,26 +73,5 @@ namespace Ostrich
         {
             return MillisFromEpoch(dateTime) / NANOS_IN_A_MILLISECOND;
         }
-
-        public static long CurrentTimeMillis
-        {
-            get { return DateTime.UtcNow.MillisFromEpoch(); }
-        }
-
-        public static long CurrentTimeNanos
-        {
-            get { return DateTime.UtcNow.NanosFromEpoch() / NANOS_IN_A_MILLISECOND; }
-        }
-
-        public static DateTime Epoch
-        {
-            get { return epoch; }
-        }
-    }
-
-
-    public enum DateTimePrecision
-    {
-        Seconds
     }
 }

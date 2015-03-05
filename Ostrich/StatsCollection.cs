@@ -15,16 +15,16 @@
  *  limitations under the License.
  *
  */
- using System;
-using System.Collections.Concurrent;
-using System.Diagnostics;
-using Ostrich.Util;
-
 namespace Ostrich
 {
+    using System;
+    using System.Collections.Concurrent;
+    using System.Diagnostics;
+    using Ostrich.Util;
+
     public class StatsCollection
     {
-        private readonly ConcurrentDictionary<string, AtomicLong> counters = new ConcurrentDictionary<string,AtomicLong>();
+        private readonly ConcurrentDictionary<string, AtomicLong> counters = new ConcurrentDictionary<string, AtomicLong>();
         private readonly ConcurrentDictionary<string, FanoutMetric> metrics = new ConcurrentDictionary<string, FanoutMetric>();
         private readonly ConcurrentDictionary<string, Gauge> gauges = new ConcurrentDictionary<string, Gauge>();
         private readonly ConcurrentDictionary<StatsListener, object> listeners = new ConcurrentDictionary<StatsListener, object>();
@@ -82,8 +82,10 @@ namespace Ostrich
                 {
                     listeners.Each(l => metric.AddFanout(l.Key.GetMetric(key)));
                 }
+
                 metric = metrics.AddOrUpdate(key, metric, (k, m) => metric);
             }
+
             return metric;
         }
 
@@ -132,7 +134,11 @@ namespace Ostrich
 
         public void RecordMetric(string[] names, Stopwatch timer)
         {
-            if (timer.IsRunning) timer.Stop();
+            if (timer.IsRunning)
+            {
+                timer.Stop();
+            }
+
             foreach (var name in names)
             {
                 var lowerName = name.ToLower();
@@ -182,6 +188,7 @@ namespace Ostrich
                 var counter = new AtomicLong(count);
                 answer = counters.AddOrUpdate(lowerName, counter, (k, v) => new AtomicLong(v.Value + counter.Value)).Value;
             }
+
             return answer;
         }
 

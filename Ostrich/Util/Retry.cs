@@ -1,8 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace Ostrich.Util
+﻿namespace Ostrich.Util
 {
+    using System;
+    using System.Collections.Generic;
+
     /// <summary>
     /// Helps to do retry logic.  A typical use would be:
     /// 
@@ -23,7 +23,10 @@ namespace Ostrich.Util
         private Retry(int atMost)
         {
             if (atMost < 0)
+            {
                 throw new ArgumentException("Must be greater than 0");
+            }
+
             this.atMost = atMost;
         }
 
@@ -67,7 +70,9 @@ namespace Ostrich.Util
                 {
                     exceptions.Add(e);
                     if (count >= atMost)
+                    {
                         throw new AggregateException(exceptions);
+                    }
                 }
             }
         }

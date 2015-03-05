@@ -15,10 +15,10 @@
  *  limitations under the License.
  *
  */
-﻿using System.Collections.Generic;
-
 namespace Ostrich
 {
+    ﻿using System.Collections.Generic;
+
     /// <summary>
     /// TODO Capture point in time snapshot instead of references
     /// </summary>

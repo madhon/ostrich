@@ -15,17 +15,17 @@
  *  limitations under the License.
  *
  */
- using System;
-using System.Collections.Generic;
-using System.Linq;
-using Newtonsoft.Json;
-using Ostrich.Util;
-
 namespace Ostrich
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Newtonsoft.Json;
+    using Ostrich.Util;
+
     public class Metric
     {
-        private static readonly double[] percentiles = new[] { 0.25d, 0.5d, 0.75d, 0.9d, 0.99d, 0.999d, 0.9999d };
+        private static readonly double[] Percentiles = new[] { 0.25d, 0.5d, 0.75d, 0.9d, 0.99d, 0.999d, 0.9999d };
 
         private double accumulatedVariance;
 
@@ -45,8 +45,11 @@ namespace Ostrich
         }
 
         public double Mean { get; private set; }
+
         public double Min { get; private set; }
+
         public double Max { get; private set; }
+
         public long Count { get; private set; }
 
         public double StandardDeviation
@@ -63,7 +66,10 @@ namespace Ostrich
         /// <returns>this Metric instance</returns>
         public virtual void Add(double elapsedTime)
         {
-            if (elapsedTime < 0) return;
+            if (elapsedTime < 0)
+            {
+                return;
+            }
 
             lock (this)
             {
@@ -78,7 +84,7 @@ namespace Ostrich
                 else
                 {
                     var delta = elapsedTime - Mean;
-                    Mean += (delta / Count);
+                    Mean += delta / Count;
                     accumulatedVariance = delta * (elapsedTime - Mean);
                     Min = Math.Min(elapsedTime, Min);
                     Max = Math.Max(elapsedTime, Max);
@@ -91,7 +97,11 @@ namespace Ostrich
             lock (this)
             {
                 var answer = new Dictionary<string, long>();
-                if (Histogram != null) percentiles.Each(p => answer[Convert.ToString(p)] = Histogram.GetPercentile(p));
+                if (Histogram != null)
+                {
+                    Percentiles.Each(p => answer[Convert.ToString(p)] = Histogram.GetPercentile(p));
+                }
+
                 return answer;
             }
         }
@@ -111,17 +121,37 @@ namespace Ostrich
 
         public bool Equals(Metric other)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
+            if (ReferenceEquals(null, other))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, other))
+            {
+                return true;
+            }
+
             return other.Mean.Equals(Mean) && other.Min.Equals(Min) && other.Max.Equals(Max) && other.Count == Count;
         }
 
         public override bool Equals(object obj)
         {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != typeof (Metric)) return false;
-            return Equals((Metric) obj);
+            if (ReferenceEquals(null, obj))
+            {
+                return false;
+            }
+
+            if (ReferenceEquals(this, obj))
+            {
+                return true;
+            }
+
+            if (obj.GetType() != typeof(Metric))
+            {
+                return false;
+            }
+
+            return Equals((Metric)obj);
         }
 
         public override int GetHashCode()
@@ -129,9 +159,9 @@ namespace Ostrich
             unchecked
             {
                 int result = Mean.GetHashCode();
-                result = (result*397) ^ Min.GetHashCode();
-                result = (result*397) ^ Max.GetHashCode();
-                result = (result*397) ^ Count.GetHashCode();
+                result = (result * 397) ^ Min.GetHashCode();
+                result = (result * 397) ^ Max.GetHashCode();
+                result = (result * 397) ^ Count.GetHashCode();
                 return result;
             }
         }
@@ -175,8 +205,7 @@ namespace Ostrich
             lock (this)
             {
                 var percentiles = GetPercentiles().Select(kv => string.Format("{0}={1}", kv.Key, kv.Value));
-                return String.Format("mean[{0}] stddev[{1}] min[{2}] max[{3}] count[{4}] p[{5}]",
-                                     Mean, StandardDeviation, Min, Max, Count, string.Join(",", percentiles));
+                return string.Format("mean[{0}] stddev[{1}] min[{2}] max[{3}] count[{4}] p[{5}]", Mean, StandardDeviation, Min, Max, Count, string.Join(",", percentiles));
             }
         }
 

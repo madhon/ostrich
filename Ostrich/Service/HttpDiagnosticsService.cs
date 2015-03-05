@@ -15,19 +15,18 @@
  *  limitations under the License.
  *
  */
- using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Configuration;
-using System.Net;
-using System.Reflection;
-using System.Web;
-using Ostrich.Http;
-using Ostrich.Util;
-using Ostrich.Logging;
-
 namespace Ostrich.Service
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Collections.Specialized;
+    using System.Configuration;
+    using System.Net;
+    using System.Web;
+    using Ostrich.Http;
+    using Ostrich.Logging;
+    using Ostrich.Util;
+
     public class HttpDiagnosticsService : IDisposable
     {
         private static readonly ILog logger = LogProvider.GetCurrentClassLogger();

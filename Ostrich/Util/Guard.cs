@@ -15,15 +15,18 @@
  *  limitations under the License.
  *
  */
- using System;
-
 namespace Ostrich.Util
 {
+    using System;
+
     public static class Guard
     {
         public static void NotNull(object o)
         {
-            if (o == null) throw new ArgumentNullException();
+            if (o == null)
+            {
+                throw new ArgumentNullException();
+            }
         }
     }
 }

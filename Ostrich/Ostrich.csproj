@@ -45,7 +45,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Packages\LibLog.3.1\LibLog.cs" />
+    <Compile Include="App_Packages\LibLog.3.1\LibLog.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="AtomicLong.cs" />
     <Compile Include="DateTimeUtils.cs" />
     <Compile Include="Gauge.cs" />

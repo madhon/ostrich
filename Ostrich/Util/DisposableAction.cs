@@ -15,10 +15,10 @@
  *  limitations under the License.
  *
  */
- using System;
-
 namespace Ostrich.Util
 {
+    using System;
+
     public class DisposableAction : IDisposable
     {
         private readonly Action action;
@@ -29,7 +29,11 @@ namespace Ostrich.Util
         /// <param name="action">The action.</param>
         public DisposableAction(Action action)
         {
-            if (action == null) throw new ArgumentNullException("action");
+            if (action == null)
+            {
+                throw new ArgumentNullException("action");
+            }
+
             this.action = action;
         }
 

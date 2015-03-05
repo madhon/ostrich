@@ -15,15 +15,14 @@
  *  limitations under the License.
  *
  */
- using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Ostrich.Util
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+
     public static class EnumerableExtensions
     {
-
         /// <summary>
         /// Executes the action for each item in the source. This function causes side effects 
         /// to the global state and should be used accordingly.
@@ -34,10 +33,15 @@ namespace Ostrich.Util
         /// <returns></returns>
         public static void Each<T>(this IEnumerable<T> source, Action<T> action)
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
 
             foreach (T target in source)
+            {
                 action(target);
+            }
         }
 
         /// <summary>
@@ -49,7 +53,10 @@ namespace Ostrich.Util
         /// <param name="action">The action.</param>
         public static void EachWithIndex<T>(this IEnumerable<T> source, Action<T, int> action)
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
 
             for (int i = 0; i < source.Count(); i++)
             {
@@ -66,12 +73,17 @@ namespace Ostrich.Util
         /// <param name="source">The source.</param>
         /// <param name="action">The action.</param>
         /// <returns></returns>
-        public static void Each<K,V>(this IDictionary<K,V> source, Action<K,V> action)
+        public static void Each<K, V>(this IDictionary<K, V> source, Action<K, V> action)
         {
-            if (source == null) throw new ArgumentNullException("source");
+            if (source == null)
+            {
+                throw new ArgumentNullException("source");
+            }
 
             foreach (KeyValuePair<K, V> target in source)
+            {
                 action(target.Key, target.Value);
+            }
         }
     }
 }
