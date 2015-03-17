@@ -6,8 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
-using Newtonsoft.Json;
 using Ostrich.Util;
+using Newtonsoft.Json;
 
 namespace Ostrich.Service
 {

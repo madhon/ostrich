@@ -21,7 +21,6 @@ namespace Ostrich
     using System.Collections.Concurrent;
     using System.Collections.Generic;
     using System.Diagnostics;
-    using System.Reflection;
     using Newtonsoft.Json;
     using Ostrich.Logging;
     using Ostrich.Util;
