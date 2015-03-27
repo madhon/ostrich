@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Shouldly;
-using Xunit;
-
-namespace Ostrich.Tests
+﻿namespace Ostrich.Tests
 {
+    using System;
+    using System.Linq;
+    using Shouldly;
+
     public class StatsCollectionTests : IDisposable
     {
         private readonly StatsCollection stats;
@@ -20,35 +18,32 @@ namespace Ostrich.Tests
             stats.ClearAll();
         }
 
-        [Fact]
         public void BasicCounters()
         {
             stats.Increment("widgets", 1);
             stats.Increment("wodgets", 12);
             stats.Increment("wodgets");
 
-            // TODO Fix this
-            //stats.Counters.ToList().ShouldContain(new List<KeyValuePair<string, AtomicLong>>
-            //{
-            //    new KeyValuePair<string, AtomicLong>("widgets", new AtomicLong(1)),
-            //    new KeyValuePair<string, AtomicLong>("wodgets", new AtomicLong(13))
-            //});
+            //// TODO Fix this
+            ////stats.Counters.ToList().ShouldContain(new List<KeyValuePair<string, AtomicLong>>
+            ////{
+            ////    new KeyValuePair<string, AtomicLong>("widgets", new AtomicLong(1)),
+            ////    new KeyValuePair<string, AtomicLong>("wodgets", new AtomicLong(13))
+            ////});
         }
 
-        [Fact]
         public void NegativeCounters()
         {
             stats.Increment("widgets", 3);
             stats.Increment("widgets", -1);
 
-            // TODO Fix this
-            //stats.Counters.ToArray().ShouldContain(new List<KeyValuePair<string, AtomicLong>>
-            //{
-            //    new KeyValuePair<string, AtomicLong>("widgets", new AtomicLong(2)),
-            //});
+            //// TODO Fix this
+            ////stats.Counters.ToArray().ShouldContain(new List<KeyValuePair<string, AtomicLong>>
+            ////{
+            ////    new KeyValuePair<string, AtomicLong>("widgets", new AtomicLong(2)),
+            ////});
         }
 
-        [Fact]
         public void EmptyMetrics()
         {
             stats.RecordMetric("test", 0);
@@ -60,7 +55,6 @@ namespace Ostrich.Tests
             metric.Count.ShouldBe(1);
         }
 
-        [Fact]
         public void MetricBasicMeanMinMax()
         {
             stats.RecordMetric("test", 1);
@@ -74,14 +68,12 @@ namespace Ostrich.Tests
             metric.Count.ShouldBe(3);
         }
 
-        [Fact]
         public void BasicGauge()
         {
             stats.AddGauge("pi", new Gauge(() => Math.PI));
             stats.Gauges.Values.First().Value.ShouldBe(Math.PI);
         }
 
-        [Fact]
         public void ClearGauge()
         {
             stats.AddGauge("pi", new Gauge(() => Math.PI));
@@ -89,7 +81,6 @@ namespace Ostrich.Tests
             stats.Gauges.Count.ShouldBe(0);
         }
 
-        [Fact]
         public void GaugesUpdate()
         {
             float seed = 0;

@@ -1,14 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Shouldly;
-using Ostrich.Service;
-using Ostrich.Util;
-using Xunit;
-
-namespace Ostrich.Tests
+﻿namespace Ostrich.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using Ostrich.Service;
+    using Ostrich.Util;
+    using Shouldly;
+
     public class TimeSeriesCollectorTests : IDisposable
     {
         private StatsCollection stats;
@@ -30,7 +28,6 @@ namespace Ostrich.Tests
             collector.Dispose();
         }
 
-        [Fact]
         public void StatsIncr()
         {
             stats.Increment("cats");
@@ -54,7 +51,6 @@ namespace Ostrich.Tests
             AssertClose(new List<long>(new[] { SystemClock.Seconds(), 60000 }), series.ElementAt(59));
         }
 
-        [Fact]
         public void StatsWithCounterUpdate()
         {
             stats.Increment("tps", 10);
@@ -75,7 +71,6 @@ namespace Ostrich.Tests
             AssertClose(new List<long>(new[] { SystemClock.Seconds(), 5 }), series.ElementAt(59));
         }
 
-        [Fact]
         public void SpecificTimingProfiles()
         {
             stats.RecordMetric("run", 5);
@@ -101,8 +96,8 @@ namespace Ostrich.Tests
             AssertClose(new List<long>(new[] { SystemClock.Seconds(), 10, 23 }), series.ElementAt(59).ToArray());
         }
 
-        //punt timestamp division rounding temporarily
-        public void AssertClose(IEnumerable<long> a, IEnumerable<long> b)
+        // punt timestamp division rounding temporarily
+        private void AssertClose(IEnumerable<long> a, IEnumerable<long> b)
         {
             a.Count().ShouldBe(b.Count());
             for (int i = 0; i < a.Count(); i++)
@@ -111,13 +106,16 @@ namespace Ostrich.Tests
                 var itemB = b.ElementAt(i);
 
                 if (itemA + 1 == itemB)
+                {
                     itemA = itemA + 1;
+                }
                 else if (itemB + 1 == itemA)
+                {
                     itemB = itemB + 1;
-                itemA.ShouldBe(itemB);
+                }
 
+                itemA.ShouldBe(itemB);
             }
         }
-
     }
 }

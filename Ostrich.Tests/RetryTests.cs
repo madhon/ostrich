@@ -1,15 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Shouldly;
-using Ostrich.Util;
-using Xunit;
-
-namespace Ostrich.Tests
+﻿namespace Ostrich.Tests
 {
+    using System;
+    using System.Linq;
+    using Ostrich.Util;
+    using Shouldly;
+
     public class RetryTests
     {
-        [Fact]
         public void WillRetryOnly3Times()
         {
             int retries = 0;
@@ -25,6 +22,7 @@ namespace Ostrich.Tests
             {
                 e.InnerExceptions.Cast<InvalidOperationException>().Count().ShouldBe(3);
             }
+
             retries.ShouldBe(3);
         }
     }

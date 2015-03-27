@@ -1,16 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Shouldly;
-using Xunit;
-
-namespace Ostrich.Tests
+﻿namespace Ostrich.Tests
 {
+    using System;
+    using Shouldly;
+
     public class HistogramTests
     {
-        Histogram histogram = new Histogram();
-        Histogram histogram2 = new Histogram();
+        private Histogram histogram = new Histogram();
+        private Histogram histogram2 = new Histogram();
 
         public HistogramTests()
         {
@@ -18,7 +14,6 @@ namespace Ostrich.Tests
             histogram2.Clear();
         }
 
-        [Fact]
         public void CanFindTheRightBucketForTimings()
         {
             histogram.Add(0);
@@ -36,10 +31,12 @@ namespace Ostrich.Tests
             histogram.Get(true)[8].ShouldBe(3);
         }
 
-        [Fact]
         public void FindHistogramCutoffsForVariousPercentages()
         {
-            for (int i = 0; i < 1000; i++) histogram.Add(i);
+            for (int i = 0; i < 1000; i++)
+            {
+                histogram.Add(i);
+            }
 
             Histogram.BinarySearch(histogram.GetPercentile(0.0d)).ShouldBe(0);
             Histogram.BinarySearch(histogram.GetPercentile(0.5d)).ShouldBe(22);
@@ -48,7 +45,6 @@ namespace Ostrich.Tests
             Histogram.BinarySearch(histogram.GetPercentile(1.0d)).ShouldBe(25);
         }
 
-        [Fact]
         public void Merge()
         {
             for (int i = 0; i < 50; i++)
@@ -65,15 +61,14 @@ namespace Ostrich.Tests
             for (int i = 0; i < 50; i++)
             {
                 var bucket = Histogram.BinarySearch(i * 10);
-                stats[bucket].ShouldBe(2*stats2[bucket]);
+                stats[bucket].ShouldBe(2 * stats2[bucket]);
             }
         }
 
-        [Fact]
         public void HandleAVeryLargeTiming()
         {
             histogram.Add(100000000);
-            histogram.GetPercentile(1.0d).ShouldBe(Int32.MaxValue);
+            histogram.GetPercentile(1.0d).ShouldBe(int.MaxValue);
         }
     }
 }
