@@ -34,7 +34,7 @@ namespace Ostrich
         
         public StatsListener(StatsCollection collection)
         {
-            Guard.NotNull(collection);
+            Guard.AgainstNullArgument("collection", collection);
             this.collection = collection;
             collection.AddListener(this);
             collection.Counters.Each(kv => lastCounters[kv.Key] = kv.Value);

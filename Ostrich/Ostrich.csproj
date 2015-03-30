@@ -52,6 +52,9 @@
     <Compile Include="AtomicLong.cs" />
     <Compile Include="DateTimeUtils.cs" />
     <Compile Include="Gauge.cs" />
+    <Compile Include="Guard.cs">
+      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
+    </Compile>
     <Compile Include="Histogram.cs" />
     <Compile Include="Http\Application.cs" />
     <Compile Include="Http\Buffers.cs" />
@@ -85,7 +88,6 @@
     <Compile Include="StatsSummary.cs" />
     <Compile Include="Util\DisposableAction.cs" />
     <Compile Include="Util\EnumerableExtensions.cs" />
-    <Compile Include="Util\Guard.cs" />
     <Compile Include="Util\Retry.cs" />
     <Compile Include="Util\SystemClock.cs" />
   </ItemGroup>
@@ -104,6 +106,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Service\Static\jquery-migrate.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Service\Static\report.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\GitVersionTask.2.0.1\Build\GitVersionTask.targets" Condition="Exists('..\packages\GitVersionTask.2.0.1\Build\GitVersionTask.targets')" />

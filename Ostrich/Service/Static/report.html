@@ -1,27 +1,7 @@
 <!DOCTYPE html>
-<!--
-   Licensed to the Apache Software Foundation (ASF) under one
-   or more contributor license agreements.  See the NOTICE file
-   distributed with this work for additional information
-   regarding copyright ownership.  The ASF licenses this file
-   to you under the Apache License, Version 2.0 (the
-   "License"); you may not use this file except in compliance
-   with the License.  You may obtain a copy of the License at
-
-     http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing,
-   software distributed under the License is distributed on an
-   "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-   KIND, either express or implied.  See the License for the
-   specific language governing permissions and limitations
-   under the License.    
--->
-<html>
+<html lang="en">
   <head>
     <title>Stats Report</title>
-      <script type="text/javascript" src="/static/jquery.js"></script>
-      <script type="text/javascript" src="/static/jquery-migrate.js"></script>
     <style type="text/css">
     body {
       font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
@@ -41,49 +21,17 @@
     }
     #footer a, #footer a:visited { color: #999; }
     </style>
-    <script type="text/javascript">
-    function spacify(str) {
-      return str.replace(/_/g, ' ');
-    }
 
-    function descendingDisplay(datapoint) {
-      if ((typeof datapoint === 'string') || (typeof datapoint === 'number')) {
-        return datapoint;
-      } else if (typeof datapoint === 'object') {
-        var stats = new Array;
-
-        for (k in datapoint) {
-          stats.push(spacify(k) + ': ' + datapoint[k]);
-        }
-
-        return stats.join(", ");
-      }
-    }
-
-    function loaded() {
-      $.getJSON("/stats.json", function(data) {
-        for (key in data) {
-          $("#contents").append('<table id="' + key + '"><tr><th>' + key + '</th></tr></table>');
-          for (datapoint in data[key]) {
-            $("#" + key).append('<tr><td width="30%">' + spacify(datapoint) + '</td><td width="70%">' + descendingDisplay(data[key][datapoint]) + '</td></tr>');
-          }
-        }
-      });
-
-      $("#gendate").append(new Date().toString())
-    }
-    </script>
   </head>
   <body>
     <h1>Stats Report</h1>
     <div id="contents"></div>
-    <script type="text/javascript">
-    $(document).ready(function() {
-      loaded();
-    });
-    </script>
     <div id="footer">
       generated at <span id="gendate"></span><br />
     </div>
+
+      <script type="text/javascript" src="/static/jquery.js"></script>
+      <script type="text/javascript" src="/static/jquery-migrate.js"></script>
+      <script type="text/javascript" src="/static/report.js"></script>
   </body>
 </html>

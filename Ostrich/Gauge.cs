@@ -30,7 +30,7 @@ namespace Ostrich
 
         public Gauge(Func<double> func)
         {
-            Guard.NotNull(func);
+            Guard.AgainstNullArgument("func", func);
             this.func = func;
         }
 
