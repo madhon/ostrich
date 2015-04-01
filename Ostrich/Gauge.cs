@@ -44,7 +44,7 @@ namespace Ostrich
                 }
                 catch (Exception e)
                 {
-                    Logger.Warn(e.Message);
+                    Logger.Warn(() => e.Message);
                 }
 
                 return 0;

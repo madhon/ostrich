@@ -20,8 +20,8 @@ namespace Ostrich
     using System;
     using System.Collections.Generic;
     using System.Linq;
-    using Ostrich.Util;
     using Newtonsoft.Json;
+    using Ostrich.Util;
 
     public class Metric
     {

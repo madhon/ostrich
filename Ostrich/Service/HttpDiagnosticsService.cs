@@ -77,7 +77,7 @@ namespace Ostrich.Service
                 {
                     var host = new IPEndPoint(IPAddress.Any, configurationPort);
                     server = new HttpServer(host);
-                    logger.Debug("Staring diagnostics service on " + host);
+                    logger.Debug(() => string.Format("Starting diagnostics service on {0}", host));
                     try
                     {
                         return server.Start();
