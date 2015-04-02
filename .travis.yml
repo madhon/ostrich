@@ -1,2 +1,8 @@
 language: csharp
 solution: Ostrich.sln
+install:
+  - nuget restore Ostrich.sln
+  - nuget install Fixie  -OutputDirectory testrunner -ExcludeVersion
+script:
+  - xbuild /p:Configuration=Release Ostrich.sln
+  - mono ./testrunner/fixie/lib/net45/fixie.console.exe ./Ostrich.Tests/bin/Release/Ostrich.Tests.dl
