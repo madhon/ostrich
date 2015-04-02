@@ -1,3 +1,6 @@
+notifications:
+  email:
+    - madhon@madhon.co.uk
 language: csharp
 solution: Ostrich.sln
 install:
