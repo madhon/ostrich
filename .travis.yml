@@ -5,4 +5,4 @@ install:
   - nuget install Fixie  -OutputDirectory testrunner -ExcludeVersion
 script:
   - xbuild /p:Configuration=Release Ostrich.sln
-  - mono ./testrunner/fixie/lib/net45/fixie.console.exe ./Ostrich.Tests/bin/Release/Ostrich.Tests.dl
+  - mono ./testrunner/Fixie/lib/net45/Fixie.Console.exe ./Ostrich.Tests/bin/Release/Ostrich.Tests.dll
