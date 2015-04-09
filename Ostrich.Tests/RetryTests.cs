@@ -4,9 +4,11 @@
     using System.Linq;
     using Ostrich.Util;
     using Shouldly;
+    using Xunit;
 
     public class RetryTests
     {
+        [Fact]
         public void WillRetryOnly3Times()
         {
             int retries = 0;

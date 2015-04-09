@@ -1,9 +1,11 @@
 ﻿namespace Ostrich.Tests
 {
     using Shouldly;
+    using Xunit;
 
     public class MetricTests
     {
+        [Fact]
         public void MinMeanMax()
         {
             var metric = new Metric();

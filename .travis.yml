@@ -5,7 +5,7 @@ language: csharp
 solution: Ostrich.sln
 install:
   - nuget restore Ostrich.sln
-  - nuget install Fixie  -OutputDirectory testrunner -ExcludeVersion
+  - nuget install xunit.runners -Version 1.9.2 -OutputDirectory testrunner -ExcludeVersion
 script:
   - xbuild /p:Configuration=Release Ostrich.sln
-#  - mono ./testrunner/Fixie/lib/net45/Fixie.Console.exe ./Ostrich.Tests/bin/Release/Ostrich.Tests.dll
+  - mono ./testrunner/xunit.runners/tools/xunit.console.clr4.exe ./Ostrich.Tests/bin/Release/Ostrich.Tests.dll

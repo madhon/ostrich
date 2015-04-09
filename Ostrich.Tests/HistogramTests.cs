@@ -2,6 +2,7 @@
 {
     using System;
     using Shouldly;
+    using Xunit;
 
     public class HistogramTests
     {
@@ -14,6 +15,7 @@
             histogram2.Clear();
         }
 
+        [Fact]
         public void CanFindTheRightBucketForTimings()
         {
             histogram.Add(0);
@@ -31,6 +33,7 @@
             histogram.Get(true)[8].ShouldBe(3);
         }
 
+        [Fact]
         public void FindHistogramCutoffsForVariousPercentages()
         {
             for (int i = 0; i < 1000; i++)
@@ -45,6 +48,7 @@
             Histogram.BinarySearch(histogram.GetPercentile(1.0d)).ShouldBe(25);
         }
 
+        [Fact]
         public void Merge()
         {
             for (int i = 0; i < 50; i++)
@@ -65,6 +69,7 @@
             }
         }
 
+        [Fact]
         public void HandleAVeryLargeTiming()
         {
             histogram.Add(100000000);

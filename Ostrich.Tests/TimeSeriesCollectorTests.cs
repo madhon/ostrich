@@ -6,6 +6,7 @@
     using Ostrich.Service;
     using Ostrich.Util;
     using Shouldly;
+    using Xunit;
 
     public class TimeSeriesCollectorTests : IDisposable
     {
@@ -28,6 +29,7 @@
             collector.Dispose();
         }
 
+        [Fact]
         public void StatsIncr()
         {
             stats.Increment("cats");
@@ -51,6 +53,7 @@
             AssertClose(new List<long>(new[] { SystemClock.Seconds(), 60000 }), series.ElementAt(59));
         }
 
+        [Fact]
         public void StatsWithCounterUpdate()
         {
             stats.Increment("tps", 10);
@@ -71,6 +74,7 @@
             AssertClose(new List<long>(new[] { SystemClock.Seconds(), 5 }), series.ElementAt(59));
         }
 
+        [Fact]
         public void SpecificTimingProfiles()
         {
             stats.RecordMetric("run", 5);
