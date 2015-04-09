@@ -2,7 +2,7 @@
 
 Port of Twitter's Ostrich library from Scala to .NET
 
-[![Build Status](https://travis-ci.org/madhon/ostrich.svg?branch=master)](https://travis-ci.org/madhon/ostrich)
+[![Build Status](https://img.shields.io/travis/madhon/ostrich.svg)](https://travis-ci.org/madhon/ostrich)
 
 # License
 
