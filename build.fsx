@@ -4,7 +4,7 @@
 open Fake
 open Fake.AssemblyInfoFile
 open Fake.MSBuildHelper
-open Fake.XUnitHelper
+open Fake.XUnit2Helper
 
 let buildDir  = @".\bin\"
 let testDir   = @".\bin\"
@@ -28,7 +28,7 @@ Target "CompileTest" (fun _ ->
 
 Target "XUnitTest" (fun _ ->
     !! (testDir + @"\Ostrich.Tests.dll")
-      |> xUnit (fun p ->
+      |> xUnit2 (fun p ->
                  {p with ShadowCopy = true; HtmlOutput = true; OutputDir = testDir})
 )
 

@@ -5,7 +5,6 @@
     using Ostrich.Service;
     using Shouldly;
     using Xunit;
-    using Xunit.Extensions;
 
     public class HttpServerTests
     {
