@@ -67,6 +67,7 @@
     <Compile Include="IO\EndianBitConverter.cs" />
     <Compile Include="IO\Endianness.cs" />
     <Compile Include="IO\LittleEndianBitConverter.cs" />
+    <Compile Include="JetBrains.Annotations.cs" />
     <Compile Include="Metric.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service\CarbonWriter.cs" />
