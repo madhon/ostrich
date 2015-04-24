@@ -10,18 +10,30 @@ let buildDir  = @".\bin\"
 let testDir   = @".\bin\"
 let packagesDir = @".\packages"
 
+let project = "Ostrich"
+let summary = ".NET port of Twitter's Ostrich library for capturing performance metrics in a CLR app"
+let description = ".NET port of Twitter's Ostrich library for capturing performance metrics in a CLR app"
+let authors = [ "Madhon" ]
+let tags = ""
+
+let solutionFile  = "Ostrich.sln"
+
+let gitOwner = "madhon" 
+let gitHome = "https://github.com/" + gitOwner
+let gitName = "ostrich"
+
 Target "Clean" (fun _ ->
     CleanDirs [buildDir; testDir]
 )
 
 Target "CompileApp" (fun _ ->
-    !! @"Ostrich\**\*.csproj"
+    !! @"src\**\*.csproj"
       |> MSBuildRelease buildDir "Build"
       |> Log "AppBuild-Output: "
 )
 
 Target "CompileTest" (fun _ ->
-    !! @"Ostrich.Tests\**\*.csproj"
+    !! @"tests\**\*.csproj"
       |> MSBuildDebug testDir "Build"
       |> Log "TestBuild-Output: "
 )
@@ -32,7 +44,24 @@ Target "XUnitTest" (fun _ ->
                  {p with ShadowCopy = true; HtmlOutput = true; OutputDir = testDir})
 )
 
-// Dependencies
+Target "NuGet" (fun _ ->
+    Paket.Pack(fun p -> 
+        { p with
+            OutputPath = "dist"
+        })
+)
+
+Target "PublishNuget" (fun _ ->
+    Paket.Push(fun p -> 
+        { p with
+            WorkingDir = "dist" })
+)
+
+Target "All" DoNothing
+
+"All"
+  ==> "XUnitTest"
+
 "Clean"
   ==> "CompileApp"
   ==> "CompileTest"

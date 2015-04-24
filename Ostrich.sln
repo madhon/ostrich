@@ -8,9 +8,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{DD6A14
 		paket.dependencies = paket.dependencies
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ostrich", "Ostrich\Ostrich.csproj", "{F1C4BBCA-A55B-4C21-AA84-835D86769786}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ostrich", "src\Ostrich\Ostrich.csproj", "{F1C4BBCA-A55B-4C21-AA84-835D86769786}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ostrich.Tests", "Ostrich.Tests\Ostrich.Tests.csproj", "{D8447A5A-5C24-46A9-99C7-BA03D4C1E968}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ostrich.Tests", "tests\Ostrich.Tests\Ostrich.Tests.csproj", "{D8447A5A-5C24-46A9-99C7-BA03D4C1E968}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

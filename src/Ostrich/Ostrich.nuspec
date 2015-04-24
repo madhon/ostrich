@@ -3,10 +3,10 @@
   <metadata>
     <id>Ostrich</id>
     <version>1.4.0.7</version>
-    <authors>Jon</authors>
-    <owners>Jon</owners>
+    <authors>Madhon</authors>
+    <owners>Madhon</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-	<description>.NET port of Twitter's Ostrich library for capturing performance metrics in a CLR app</description>
+    <description>.NET port of Twitter's Ostrich library for capturing performance metrics in a CLR app</description>
     <tags>performance metrics counters</tags>
     <iconUrl>http://apitize.com.s3.amazonaws.com/logo_metrics.png</iconUrl>    
     <dependencies>
