@@ -4,12 +4,14 @@ version 1.4.0.7
 authors Madhon
 requireLicenseAcceptance false
 iconUrl http://apitize.com.s3.amazonaws.com/logo_metrics.png
+projectUrl https://github.com/madhon/ostrich
+licenseUrl http://www.apache.org/licenses/LICENSE-2.0
+title Ostrich .NET
 description
         .NET port of Twitter's Ostrich library for capturing performance metrics in a CLR app
 tags
         performance metrics counters
 files
-    bin/Ostrich.dll ==> lib\net40
-	
+    bin/Ostrich.dll ==> lib/net40
 dependencies
-   Newtonsoft.Json >= 6.0.8
+    Newtonsoft.Json >= 6.0.8
