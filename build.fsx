@@ -7,7 +7,7 @@ open Fake.MSBuildHelper
 open Fake.XUnit2Helper
 
 let buildDir  = @".\bin\"
-let testDir   = @".\bin\"
+let testDir   = @".\binTest\"
 let packagesDir = @".\packages"
 
 let project = "Ostrich"
