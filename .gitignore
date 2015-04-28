@@ -18,6 +18,7 @@
 x64/
 build/
 bld/
+[Bb]inTest/
 [Bb]in/
 [Oo]bj/
 
