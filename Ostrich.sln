@@ -1,7 +1,6 @@
-
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".paket", ".paket", "{DD6A142A-DCBF-48D9-B728-5EB387E73FD6}"
 	ProjectSection(SolutionItems) = preProject
@@ -11,6 +10,14 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ostrich", "src\Ostrich\Ostrich.csproj", "{F1C4BBCA-A55B-4C21-AA84-835D86769786}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ostrich.Tests", "tests\Ostrich.Tests\Ostrich.Tests.csproj", "{D8447A5A-5C24-46A9-99C7-BA03D4C1E968}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{086FD523-E3C4-4497-854A-D2C6A8BD2F0D}"
+	ProjectSection(SolutionItems) = preProject
+		LICENSE.txt = LICENSE.txt
+		paket.dependencies = paket.dependencies
+		paket.template = paket.template
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
