@@ -46,14 +46,14 @@ Integrated Pipeline:
 ```xml
 <appSettings>
      ... <!-- Some more information at the bottom of this page about which port number to use -->
-     <add key="OstrichNet.Sercice.HttpDiagnosticsService.port" value="7006" />
+     <add key="Ostrich.Service.HttpDiagnosticsService.port" value="7006" />
  </appSettings>
  
  <system.webServer> 
     ... 
    <modules>
      ...
-     <add name="DiagnosticsModule preCondition="managedHandler" type="OstrichNet.Service.DiagnosticsHttpModule, OstrichNet" />
+     <add name="DiagnosticsModule preCondition="managedHandler" type="Ostrich.Service.DiagnosticsHttpModule, Ostrich" />
    </modules>
  </system.webserver>
 ```
@@ -63,14 +63,14 @@ Classic Pipeline:
 ```xml
 <appSettings>
     ... <!-- Some more information at the bottom of this page about which port number to use -->
-    <add key="OstrichNet.Service.HttpDiagnosticsService.port" value="7006" />
+    <add key="Ostrich.Service.HttpDiagnosticsService.port" value="7006" />
 </appSettings>
 
 <system.web>
     ...
     <httpModules>
         ...
-        <add name="DiagnosticsModule" type="OstrichNet.Service.DiagnosticsHttpModule, OstrichNet" />
+        <add name="DiagnosticsModule" type="Ostrich.Service.DiagnosticsHttpModule, Ostrich" />
     </httpModules>
 </system.web>
 ```
