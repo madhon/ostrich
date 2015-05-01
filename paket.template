@@ -1,6 +1,6 @@
 type file
 id Ostrich
-version 1.4.0.7
+version 1.4.0.8
 authors Madhon
 requireLicenseAcceptance false
 iconUrl http://apitize.com.s3.amazonaws.com/logo_metrics.png
