@@ -2,6 +2,7 @@
 {
     using System;
     using System.Net;
+    using System.Net.Http;
     using Ostrich.Service;
     using Shouldly;
     using Xunit;
@@ -31,25 +32,18 @@
             using (var service = new HttpDiagnosticsService())
             {
                 service.Start();
-                StatusOfPage(page, service.Port).ShouldBe(WebExceptionStatus.Success);
+                StatusOfPage(page, service.Port).ShouldBe(HttpStatusCode.OK);
             }
         }
 
-        private WebExceptionStatus StatusOfPage(string url, int port)
+        private HttpStatusCode StatusOfPage(string url, int port)
         {
-            using (var client = new WebClient())
+            var page = new Uri(string.Format("http://localhost:{0}{1}", port, url));
+
+            using (var client = new HttpClient())
             {
-                try
-                {
-                    using (client.OpenRead(new Uri(string.Format("http://localhost:{0}{1}", port, url))))
-                    {
-                        return WebExceptionStatus.Success;
-                    }
-                }
-                catch (WebException ex)
-                {
-                    return ex.Status;
-                }
+                var response = client.GetAsync(page).Result;
+                return response.StatusCode;
             }
         }
     }
