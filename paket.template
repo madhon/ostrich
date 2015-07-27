@@ -1,6 +1,6 @@
 type file
 id Ostrich
-version 1.4.0.8
+version 1.4.1.0
 authors Madhon
 requireLicenseAcceptance false
 iconUrl http://apitize.com.s3.amazonaws.com/logo_metrics.png
@@ -14,4 +14,4 @@ tags
 files
     bin/Ostrich.dll ==> lib/net40
 dependencies
-    Newtonsoft.Json >= 6.0.8
+    Newtonsoft.Json >= 7.0.1
