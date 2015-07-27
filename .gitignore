@@ -210,6 +210,10 @@ FakesAssemblies/
 # Paket Package Manager Main exe
 .paket/paket.exe
 
+
+# FAKE temp outputs
+.fake
+
 # =========================
 # Windows detritus
 # =========================
