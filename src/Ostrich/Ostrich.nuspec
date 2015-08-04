@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Ostrich</id>
-    <version>1.4.0.8</version>
+    <version>1.4.1.0</version>
     <authors>Madhon</authors>
     <owners>Madhon</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
@@ -10,7 +10,7 @@
     <tags>performance metrics counters</tags>
     <iconUrl>http://apitize.com.s3.amazonaws.com/logo_metrics.png</iconUrl>    
     <dependencies>
-      <dependency id="Newtonsoft.Json" version="6.0.8" />
+      <dependency id="Newtonsoft.Json" version="7.0.1" />
     </dependencies>
   </metadata>
     <files>
