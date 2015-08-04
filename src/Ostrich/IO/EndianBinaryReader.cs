@@ -15,18 +15,19 @@
  *  limitations under the License.
  *
  */
-using System;
-using System.IO;
-using System.Text;
-
+ 
 namespace Ostrich.IO
 {
-    /// <summary>
-	/// Equivalent of System.IO.BinaryReader, but with either endianness, depending on
-	/// the EndianBitConverter it is constructed with. No data is buffered in the
-	/// reader; the client may seek within the stream at will.
-	/// </summary>
-	public class EndianBinaryReader : IDisposable
+  using System;
+  using System.IO;
+  using System.Text;
+
+  /// <summary>
+  /// Equivalent of System.IO.BinaryReader, but with either endianness, depending on
+  /// the EndianBitConverter it is constructed with. No data is buffered in the
+  /// reader; the client may seek within the stream at will.
+  /// </summary>
+  public class EndianBinaryReader : IDisposable
 	{
 		#region Fields not directly related to properties
 		/// <summary>
@@ -36,19 +37,19 @@ namespace Ostrich.IO
 		/// <summary>
 		/// Decoder to use for string conversions.
 		/// </summary>
-		Decoder decoder;
+		readonly Decoder decoder;
 		/// <summary>
 		/// Buffer used for temporary storage before conversion into primitives
 		/// </summary>
-		byte[] buffer = new byte[16];
+		readonly byte[] buffer = new byte[16];
 		/// <summary>
 		/// Buffer used for temporary storage when reading a single character
 		/// </summary>
-		char[] charBuffer = new char[1];
+		readonly char[] charBuffer = new char[1];
 		/// <summary>
 		/// Minimum number of bytes used to encode a character
 		/// </summary>
-		int minBytesPerChar;
+		readonly int minBytesPerChar;
 		#endregion
 
 		#region Constructors
@@ -102,7 +103,8 @@ namespace Ostrich.IO
 		#endregion
 
 		#region Properties
-		EndianBitConverter bitConverter;
+
+    readonly EndianBitConverter bitConverter;
 		/// <summary>
 		/// The bit converter used to read values from the stream
 		/// </summary>
@@ -111,7 +113,7 @@ namespace Ostrich.IO
 			get { return bitConverter; }
 		}
 
-		Encoding encoding;
+      readonly Encoding encoding;
 		/// <summary>
 		/// The encoding used to read strings
 		/// </summary>
@@ -120,7 +122,7 @@ namespace Ostrich.IO
 			get { return encoding; }
 		}
 
-		Stream stream;
+    readonly Stream stream;
 		/// <summary>
 		/// Gets the underlying stream of the EndianBinaryReader.
 		/// </summary>

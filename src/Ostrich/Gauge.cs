@@ -18,9 +18,7 @@
 namespace Ostrich
 {
     using System;
-    using System.Reflection;
     using Ostrich.Logging;
-    using Ostrich.Util;
 
     public class Gauge
     {

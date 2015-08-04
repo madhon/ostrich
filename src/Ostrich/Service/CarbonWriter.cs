@@ -15,10 +15,9 @@
  *  limitations under the License.
  *
  */
- using System;
+using System;
 using System.Collections.Concurrent;
 using System.Net.Sockets;
-using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;

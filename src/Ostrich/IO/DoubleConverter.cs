@@ -167,7 +167,7 @@ namespace Ostrich.IO
 			/// <summary>
 			/// Removes leading/trailing zeroes from the expansion.
 			/// </summary>
-			internal void Normalize()
+			private void Normalize()
 			{
 				int first;
 				for (first=0; first < digits.Length; first++)

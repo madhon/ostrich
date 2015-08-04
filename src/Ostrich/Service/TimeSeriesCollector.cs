@@ -15,12 +15,11 @@
  *  limitations under the License.
  *
  */
- using System;
+using System;
 using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
-using System.Reflection;
 using System.Threading;
 using Ostrich.Util;
 using Ostrich.Logging;
@@ -125,7 +124,7 @@ namespace Ostrich.Service
         private class TimeSeries<T> : IEnumerable<T>
         {
             private readonly int size;
-            private T[] data;
+            private readonly T[] data;
             private int index;
 
             private TimeSeries(int size, Func<T> empty)

@@ -44,7 +44,7 @@ namespace Ostrich.IO
 		#endregion
 
 		#region Factory properties
-		static LittleEndianBitConverter little = new LittleEndianBitConverter();
+		static readonly LittleEndianBitConverter little = new LittleEndianBitConverter();
 		/// <summary>
 		/// Returns a little-endian bit converter instance. The same instance is
 		/// always returned.
@@ -54,7 +54,7 @@ namespace Ostrich.IO
 			get { return little; }
 		}
 
-		static BigEndianBitConverter big = new BigEndianBitConverter();
+		static readonly BigEndianBitConverter big = new BigEndianBitConverter();
 		/// <summary>
 		/// Returns a big-endian bit converter instance. The same instance is
 		/// always returned.
@@ -664,13 +664,11 @@ namespace Ostrich.IO
 			/// <summary>
 			/// Int32 version of the value.
 			/// </summary>
-			[FieldOffset(0)]
-			int i;
+			[FieldOffset(0)] readonly int i;
 			/// <summary>
 			/// Single version of the value.
 			/// </summary>
-			[FieldOffset(0)]
-			float f;
+			[FieldOffset(0)] readonly float f;
 
 			/// <summary>
 			/// Creates an instance representing the given integer.
