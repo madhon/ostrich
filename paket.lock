@@ -1,18 +1,18 @@
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
-    FAKE (4.4.1)
+    FAKE (4.4.4)
     LibLog (4.2.3) - framework: net40
-    LiteGuard.Source (0.10.0) - framework: net40
+    LiteGuard.Source (0.11.0) - framework: net40
     Newtonsoft.Json (7.0.1) - framework: net40
     Shouldly (2.6.0) - framework: net45
     xunit (2.0.0) - framework: net45
       xunit.assert (2.0.0)
       xunit.core (2.0.0)
-    xunit.abstractions (2.0.0)
-    xunit.assert (2.0.0)
-    xunit.core (2.0.0)
+    xunit.abstractions (2.0.0) - framework: net45
+    xunit.assert (2.0.0) - framework: net45
+    xunit.core (2.0.0) - framework: net45
       xunit.extensibility.core (2.0.0)
-    xunit.extensibility.core (2.0.0)
+    xunit.extensibility.core (2.0.0) - framework: net45
       xunit.abstractions (2.0.0)
     xunit.runner.console (2.0.0)
