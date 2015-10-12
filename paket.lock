@@ -1,7 +1,7 @@
 NUGET
   remote: https://nuget.org/api/v2
   specs:
-    FAKE (4.5.2)
+    FAKE (4.5.3)
     LibLog (4.2.3) - framework: net40
     LiteGuard.Source (0.11.0) - framework: net40
     Newtonsoft.Json (7.0.1) - framework: net40
