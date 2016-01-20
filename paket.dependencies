@@ -1,9 +1,17 @@
 source https://www.nuget.org/api/v2
 
-nuget LibLog framework: net40
-nuget LiteGuard.Source framework: net40
-nuget Newtonsoft.Json 7.0.1 framework: net40
-nuget Shouldly framework: net45
-nuget fake
-nuget xunit 2.1.0 framework: net45
-nuget xunit.runner.console 2.1.0
+group Build
+  source https://www.nuget.org/api/v2
+
+  nuget LibLog framework: net40
+  nuget LiteGuard.Source framework: net40
+  nuget Newtonsoft.Json 7.0.1 framework: net40
+  nuget fake
+
+group Test
+  framework: net45
+  source https://www.nuget.org/api/v2
+  
+  nuget Shouldly
+  nuget xunit 2.1.0
+  nuget xunit.runner.console 2.1.0

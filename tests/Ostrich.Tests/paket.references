@@ -1,2 +1,3 @@
-Shouldly
-xunit
+group Test
+  Shouldly
+  xunit

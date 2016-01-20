@@ -1,3 +1,4 @@
-LibLog
-LiteGuard.Source
-Newtonsoft.Json
+group Build
+  LibLog
+  LiteGuard.Source
+  Newtonsoft.Json
