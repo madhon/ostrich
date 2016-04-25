@@ -4,7 +4,7 @@ GROUP Build
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
-    FAKE (4.23)
+    FAKE (4.25.4)
     LibLog (4.2.5) - framework: net40
     LiteGuard.Source (0.11) - framework: net40
     Newtonsoft.Json (7.0.1) - framework: net40
@@ -14,7 +14,7 @@ FRAMEWORK: NET45
 NUGET
   remote: https://www.nuget.org/api/v2
   specs:
-    Shouldly (2.6)
+    Shouldly (2.7)
     xunit (2.1)
       xunit.assert (2.1)
       xunit.core (2.1)
