@@ -2,11 +2,11 @@
 
 Port of Twitter's Ostrich library from Scala to .NET
 
-[![license](https://img.shields.io/github/license/madhon/ostrich.svg?maxAge=2592000)]()
+[![license](https://img.shields.io/github/license/madhon/ostrich.svg)]()
 
 [![Build status](https://img.shields.io/appveyor/ci/madhon/ostrich.svg?maxAge=2592000)](https://ci.appveyor.com/project/madhon/ostrich)
 
-[![GitHub issues](https://img.shields.io/github/issues/badges/shields.svg?maxAge=2592000)]()
+[![GitHub issues](https://img.shields.io/github/issues/madhon/ostrich.svg)]()
 
 # Goals
 
