@@ -5,7 +5,7 @@ group Build
 
   nuget LibLog framework: net40
   nuget LiteGuard.Source framework: net40
-  nuget Newtonsoft.Json 7.0.1 framework: net40
+  nuget Newtonsoft.Json 9.0.1 framework: net40
   nuget fake
 
 group Test
