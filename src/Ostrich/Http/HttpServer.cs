@@ -30,7 +30,7 @@ namespace Ostrich.Http
   /// The operations that these `ISocket` values expose yield on `ThreadPool` threads
   /// as well. Thus, you must take care to synchronize resources shared by concurrent requests.
   /// </summary>
-  public class HttpServer : IKayakServer
+  public class HttpServer : IKayakServer, IDisposable
   {
     private static readonly ILog logger = LogProvider.GetCurrentClassLogger();
 
@@ -109,6 +109,11 @@ namespace Ostrich.Http
         }
       }, null);
     }
+
+      public void Dispose()
+      {
+          listener?.Dispose();
+      }
   }
 
   internal class DotNetSocket : ISocket
