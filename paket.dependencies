@@ -13,5 +13,5 @@ group Test
   source https://www.nuget.org/api/v2
 
   nuget Shouldly
-  nuget xunit 2.1.0
-  nuget xunit.runner.console 2.1.0
+  nuget xunit 2.3.1
+  nuget xunit.runner.console 2.3.1
