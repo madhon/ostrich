@@ -114,6 +114,15 @@
   </Target>
   -->
   <Import Project="..\..\.paket\paket.targets" />
+  <Import Project="..\..\packages\build\Microsoft.DotNet.Analyzers.Compatibility\build\Microsoft.DotNet.Analyzers.Compatibility.targets" Condition="Exists('..\..\packages\build\Microsoft.DotNet.Analyzers.Compatibility\build\Microsoft.DotNet.Analyzers.Compatibility.targets')" Label="Paket" />
+  <ItemGroup>
+    <Analyzer Include="..\..\packages\build\Microsoft.DotNet.Analyzers.Compatibility\analyzers\dotnet\cs\Microsoft.DotNet.Analyzers.Compatibility.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+    <Analyzer Include="..\..\packages\build\Microsoft.DotNet.Analyzers.Compatibility\analyzers\dotnet\cs\Microsoft.DotNet.Csv.dll">
+      <Paket>True</Paket>
+    </Analyzer>
+  </ItemGroup>
   <Choose>
     <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.0'">
       <ItemGroup>

@@ -108,7 +108,6 @@
       </ItemGroup>
     </When>
   </Choose>
-  <Import Project="..\..\packages\test\NETStandard.Library\build\NETStandard.Library.targets" Condition="Exists('..\..\packages\test\NETStandard.Library\build\NETStandard.Library.targets')" Label="Paket" />
   <ItemGroup>
     <Analyzer Include="..\..\packages\test\xunit.analyzers\analyzers\dotnet\cs\xunit.analyzers.dll">
       <Paket>True</Paket>

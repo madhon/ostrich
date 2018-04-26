@@ -2,3 +2,4 @@ group Build
   LibLog
   LiteGuard.Source
   Newtonsoft.Json
+  Microsoft.DotNet.Analyzers.Compatibility

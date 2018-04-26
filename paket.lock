@@ -3,27 +3,28 @@
 GROUP Build
 NUGET
   remote: https://www.nuget.org/api/v2
-    FAKE (4.63.2)
+    FAKE (4.64.12)
     LibLog (4.2.6) - restriction: == net40
     LiteGuard.Source (2.0.1) - restriction: == net40
+    Microsoft.DotNet.Analyzers.Compatibility (0.2.12-alpha)
     Newtonsoft.Json (10.0.3) - restriction: == net40
 
 GROUP Test
 RESTRICTION: == net45
 NUGET
   remote: https://www.nuget.org/api/v2
-    Microsoft.NETCore.Platforms (2.0)
-    NETStandard.Library (2.0.1)
+    Microsoft.NETCore.Platforms (2.0.2)
+    NETStandard.Library (2.0.2)
       Microsoft.NETCore.Platforms (>= 1.1)
       System.Runtime.InteropServices.RuntimeInformation (>= 4.3)
-    Shouldly (2.8.3)
+    Shouldly (3.0)
     System.Runtime.InteropServices.RuntimeInformation (4.3)
     xunit (2.3.1)
       xunit.analyzers (>= 0.7)
       xunit.assert (2.3.1)
       xunit.core (2.3.1)
     xunit.abstractions (2.0.1)
-    xunit.analyzers (0.7)
+    xunit.analyzers (0.8)
     xunit.assert (2.3.1)
       NETStandard.Library (>= 1.6.1)
     xunit.core (2.3.1)
