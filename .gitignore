@@ -210,6 +210,8 @@ FakesAssemblies/
 # Paket Package Manager Main exe
 .paket/paket.exe
 
+# Paket Temp files
+paket-files
 
 # FAKE temp outputs
 .fake
