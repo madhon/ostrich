@@ -3,7 +3,7 @@ source https://www.nuget.org/api/v2
 group Build
   source https://www.nuget.org/api/v2
 
-  nuget LibLog framework: net40
+  nuget LibLog 4.2.6 framework: net40
   nuget LiteGuard.Source framework: net40
   nuget Newtonsoft.Json 10.0.3 framework: net40
   nuget fake
