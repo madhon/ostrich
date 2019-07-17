@@ -1,137 +1,63 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{F1C4BBCA-A55B-4C21-AA84-835D86769786}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Ostrich</RootNamespace>
-    <AssemblyName>Ostrich</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <NuGetPackageImportStamp>4655d6f1</NuGetPackageImportStamp>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>7.3</LangVersion>
+    <Company>Madhon</Company>
+    <Copyright>Copyright © Madhon 2015 - 2019</Copyright>
+    <PackageProjectUrl>https://github.com/madhon/ostrich</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/madhon/ostrich</RepositoryUrl>
+    <NeutralLanguage>en</NeutralLanguage>
+    <AssemblyVersion>1.4.1.0</AssemblyVersion>
+    <FileVersion>1.4.1.0</FileVersion>
+    <Version>1.4.1.0</Version>
+    <PackageLicenseUrl>https://github.com/madhon/ostrich/blob/master/LICENSE.md</PackageLicenseUrl>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.configuration" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
+    <None Remove="Service\Static\drawgraph.js" />
+    <None Remove="Service\Static\graph.html" />
+    <None Remove="Service\Static\index.html" />
+    <None Remove="Service\Static\jquery-migrate.js" />
+    <None Remove="Service\Static\jquery.flot.js" />
+    <None Remove="Service\Static\jquery.flot.selection.js" />
+    <None Remove="Service\Static\jquery.js" />
+    <None Remove="Service\Static\report.html" />
+    <None Remove="Service\Static\report.js" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="App_Packages\LibLog.4.2\LibLog.cs" />
-    <Compile Include="AtomicLong.cs" />
-    <Compile Include="DateTimeUtils.cs" />
-    <Compile Include="Gauge.cs" />
-    <Compile Include="Guard.cs">
-      <ExcludeFromStyleCop>True</ExcludeFromStyleCop>
-    </Compile>
-    <Compile Include="Histogram.cs" />
-    <Compile Include="Http\Application.cs" />
-    <Compile Include="Http\Buffers.cs" />
-    <Compile Include="Http\Coroutine.cs" />
-    <Compile Include="Http\Extensions.cs" />
-    <Compile Include="Http\HttpServer.cs" />
-    <Compile Include="Http\HttpSupport.cs" />
-    <Compile Include="Http\IKayakServer.cs" />
-    <Compile Include="Http\ISocket.cs" />
-    <Compile Include="Http\Parsing.cs" />
-    <Compile Include="Http\Socket.cs" />
-    <Compile Include="IO\BigEndianBitConverter.cs" />
-    <Compile Include="IO\DoubleConverter.cs" />
-    <Compile Include="IO\EndianBinaryReader.cs" />
-    <Compile Include="IO\EndianBinaryWriter.cs" />
-    <Compile Include="IO\EndianBitConverter.cs" />
-    <Compile Include="IO\Endianness.cs" />
-    <Compile Include="IO\LittleEndianBitConverter.cs" />
-    <Compile Include="JetBrains.Annotations.cs" />
-    <Compile Include="Metric.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\CarbonWriter.cs" />
-    <Compile Include="Service\DiagnosticsHttpModule.cs" />
-    <Compile Include="Service\Extensions.cs" />
-    <Compile Include="Service\HttpDiagnosticsService.cs" />
-    <Compile Include="Service\ResourceHandlers.cs" />
-    <Compile Include="Service\ServiceConfiguration.cs" />
-    <Compile Include="Service\TimeSeriesCollector.cs" />
-    <Compile Include="Stats.cs" />
-    <Compile Include="StatsCollection.cs" />
-    <Compile Include="StatsListener.cs" />
-    <Compile Include="StatsSummary.cs" />
-    <Compile Include="Util\DisposableAction.cs" />
-    <Compile Include="Util\EnumerableExtensions.cs" />
-    <Compile Include="Util\Retry.cs" />
-    <Compile Include="Util\SystemClock.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Ostrich.nuspec" />
-    <None Include="paket.references" />
-  </ItemGroup>
+
   <ItemGroup>
     <EmbeddedResource Include="Service\Static\drawgraph.js" />
     <EmbeddedResource Include="Service\Static\graph.html" />
     <EmbeddedResource Include="Service\Static\index.html" />
+    <EmbeddedResource Include="Service\Static\jquery-migrate.js" />
     <EmbeddedResource Include="Service\Static\jquery.flot.js" />
     <EmbeddedResource Include="Service\Static\jquery.flot.selection.js" />
     <EmbeddedResource Include="Service\Static\jquery.js" />
     <EmbeddedResource Include="Service\Static\report.html" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Service\Static\jquery-migrate.js" />
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="Service\Static\report.js" />
   </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
-  <Import Project="..\..\.paket\paket.targets" />
-  <Import Project="..\..\packages\build\Microsoft.DotNet.Analyzers.Compatibility\build\Microsoft.DotNet.Analyzers.Compatibility.targets" Condition="Exists('..\..\packages\build\Microsoft.DotNet.Analyzers.Compatibility\build\Microsoft.DotNet.Analyzers.Compatibility.targets')" Label="Paket" />
+
   <ItemGroup>
-    <Analyzer Include="..\..\packages\build\Microsoft.DotNet.Analyzers.Compatibility\analyzers\dotnet\cs\Microsoft.DotNet.Analyzers.Compatibility.dll">
-      <Paket>True</Paket>
-    </Analyzer>
-    <Analyzer Include="..\..\packages\build\Microsoft.DotNet.Analyzers.Compatibility\analyzers\dotnet\cs\Microsoft.DotNet.Csv.dll">
-      <Paket>True</Paket>
-    </Analyzer>
+    <Reference Include="System.Web" />
   </ItemGroup>
-  <Choose>
-    <When Condition="$(TargetFrameworkIdentifier) == '.NETFramework' And $(TargetFrameworkVersion) == 'v4.0'">
-      <ItemGroup>
-        <Reference Include="Newtonsoft.Json">
-          <HintPath>..\..\packages\build\Newtonsoft.Json\lib\net40\Newtonsoft.Json.dll</HintPath>
-          <Private>True</Private>
-          <Paket>True</Paket>
-        </Reference>
-      </ItemGroup>
-    </When>
-  </Choose>
+
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2019.1.3" />
+    <PackageReference Include="LibLog" Version="5.0.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="LiteGuard.Source" Version="2.2.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.DotNet.Analyzers.Compatibility" Version="0.2.12-alpha">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.2" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.5.0" />
+    <PackageReference Include="Microsoft.CSharp" Version="4.5.0" />
+  </ItemGroup>
+
 </Project>

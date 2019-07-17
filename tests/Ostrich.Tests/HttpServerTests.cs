@@ -3,10 +3,11 @@
     using System;
     using System.Net;
     using System.Net.Http;
+    using NUnit.Framework;
     using Ostrich.Service;
     using Shouldly;
-    using Xunit;
 
+    [TestFixture]
     public class HttpServerTests
     {
         public HttpServerTests()
@@ -17,16 +18,15 @@
             }
         }
 
-        [Theory]
-        [InlineData("/stats.txt")]
-        [InlineData("/server_info.txt")]
-        [InlineData("/graph_data")]
-        [InlineData("/stats")]
-        [InlineData("/server_info")]
-        [InlineData("/ping")]
-        [InlineData("/static/index.html")]
-        [InlineData("/graph")]
-        [InlineData("/report")]
+        [TestCase("/stats.txt")]
+        [TestCase("/server_info.txt")]
+        [TestCase("/graph_data")]
+        [TestCase("/stats")]
+        [TestCase("/server_info")]
+        [TestCase("/ping")]
+        [TestCase("/static/index.html")]
+        [TestCase("/graph")]
+        [TestCase("/report")]
         public void HttpServerReturnsValidPage(string page)
         {
             using (var service = new HttpDiagnosticsService())

@@ -1,11 +1,12 @@
 ﻿namespace Ostrich.Tests
 {
+    using NUnit.Framework;
     using Shouldly;
-    using Xunit;
 
+    [TestFixture]
     public class MetricTests
     {
-        [Fact]
+        [Test]
         public void MinMeanMax()
         {
             var metric = new Metric();

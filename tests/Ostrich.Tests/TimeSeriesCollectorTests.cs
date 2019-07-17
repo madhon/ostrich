@@ -3,11 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using NUnit.Framework;
     using Ostrich.Service;
     using Ostrich.Util;
     using Shouldly;
-    using Xunit;
 
+    [TestFixture]
     public class TimeSeriesCollectorTests : IDisposable
     {
         private StatsCollection stats;
@@ -29,7 +30,7 @@
             collector.Dispose();
         }
 
-        [Fact]
+        [Test]
         public void StatsIncr()
         {
             stats.Increment("cats");
@@ -53,7 +54,7 @@
             AssertClose(new List<long>(new[] { SystemClock.Seconds(), 60000 }), series.ElementAt(59));
         }
 
-        [Fact]
+        [Test]
         public void StatsWithCounterUpdate()
         {
             stats.Increment("tps", 10);
@@ -74,7 +75,7 @@
             AssertClose(new List<long>(new[] { SystemClock.Seconds(), 5 }), series.ElementAt(59));
         }
 
-        [Fact]
+        [Test]
         public void SpecificTimingProfiles()
         {
             stats.RecordMetric("run", 5);

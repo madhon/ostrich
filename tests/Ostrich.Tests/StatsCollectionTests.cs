@@ -3,7 +3,7 @@
     using System;
     using System.Linq;
     using Shouldly;
-    using Xunit;
+    using NUnit.Framework;
 
     public class StatsCollectionTests : IDisposable
     {
@@ -19,7 +19,7 @@
             stats.ClearAll();
         }
 
-        [Fact]
+        [Test]
         public void BasicCounters()
         {
             stats.Increment("widgets", 1);
@@ -34,7 +34,7 @@
             ////});
         }
 
-        [Fact]
+        [Test]
         public void NegativeCounters()
         {
             stats.Increment("widgets", 3);
@@ -47,7 +47,7 @@
             ////});
         }
 
-        [Fact]
+        [Test]
         public void EmptyMetrics()
         {
             stats.RecordMetric("test", 0);
@@ -59,7 +59,7 @@
             metric.Count.ShouldBe(1);
         }
 
-        [Fact]
+        [Test]
         public void MetricBasicMeanMinMax()
         {
             stats.RecordMetric("test", 1);
@@ -73,14 +73,14 @@
             metric.Count.ShouldBe(3);
         }
 
-        [Fact]
+        [Test]
         public void BasicGauge()
         {
             stats.AddGauge("pi", new Gauge(() => Math.PI));
             stats.Gauges.Values.First().Value.ShouldBe(Math.PI);
         }
 
-        [Fact]
+        [Test]
         public void ClearGauge()
         {
             stats.AddGauge("pi", new Gauge(() => Math.PI));
@@ -88,7 +88,7 @@
             stats.Gauges.Count.ShouldBe(0);
         }
 
-        [Fact]
+        [Test]
         public void GaugesUpdate()
         {
             float seed = 0;
